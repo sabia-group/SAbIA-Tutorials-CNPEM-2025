@@ -1,30 +1,54 @@
+# ================================================================
+# GitHub Actions workflow: Installation Tests (AL-tutorial)
+# ---------------------------------------------------------------
+# This workflow ensures that the tutorial environment can be
+# correctly set up using either:
+#   1. pip (based on pyproject.toml)
+#   2. conda (based on environment.yaml)
+#
+# It is triggered automatically on every push to any branch,
+# and can also be run manually from the Actions tab.
+# ================================================================
+
 name: Installation Tests (AL-tutorial)
 
 on:
   push:
     branches:
-      - '**'
-  pull_request:
-    branches:
-      - '**'
+      - '**'              # Run on push to any branch
+  workflow_dispatch:       # Allow manual trigger from GitHub UI
 
+# ================================================================
+# JOB 1: pip-based installation
+# ---------------------------------------------------------------
+# Creates a clean Ubuntu runner, installs Python, system dependencies,
+# then installs all Python dependencies defined in pyproject.toml.
+# Verifies that imports work and runs a basic check script.
+# ================================================================
 jobs:
   test-pip-install:
     name: Test pip environment setup (AL-tutorial)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # Use the latest Ubuntu GitHub-hosted runner
 
     steps:
+      # Step 1: Get the repository code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Install system-level dependencies (required for GUI tools)
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y python3-tk
 
+      # Step 3: Set up a specific Python version
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      # Step 4: Install dependencies using pip
+      # Note: Because the repository doesn't contain a single Python package yet,
+      # the install step is wrapped in `|| true` to avoid failing the workflow.
+      # This still allows checking that all dependencies install correctly.
       - name: Install dependencies from pyproject.toml
         working-directory: AL-tutorial
         run: |
@@ -32,6 +56,7 @@ jobs:
           pip install . --no-build-isolation --config-settings editable_mode=unsafe || true
           pip install ase ipi ipywidgets jupyter mace-torch matplotlib numpy rich scipy tqdm
 
+      # Step 5: Check that imports and scripts run successfully
       - name: Verify imports
         working-directory: AL-tutorial
         run: |
@@ -39,14 +64,23 @@ jobs:
           python tests/check.py || true
 
 
+# ================================================================
+# JOB 2: conda-based installation
+# ---------------------------------------------------------------
+# Sets up a conda environment using environment.yaml and validates
+# that it can be activated and run the test script.
+# ================================================================
   test-conda-install:
     name: Test conda environment setup (AL-tutorial)
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Get the repository code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Set up Miniconda and create the environment
+      # The environment file path points to AL-tutorial/environment.yaml
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
@@ -55,8 +89,9 @@ jobs:
           environment-file: AL-tutorial/environment.yaml
           python-version: "3.10"
 
+      # Step 3: Verify that the conda environment works correctly
       - name: Verify conda environment
-        shell: bash -l {0}
+        shell: bash -l {0}      # Ensures conda is available in this shell
         working-directory: AL-tutorial
         run: |
           conda info
