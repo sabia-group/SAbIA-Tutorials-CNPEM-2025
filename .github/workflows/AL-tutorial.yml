@@ -1,16 +1,16 @@
-name: Test Installation of AL-tutorial
+name: Installation Tests (AL-tutorial)
 
 on:
-    push:
-      branches:
-        - '**'
-    pull_request:
-      branches:
-        - '**'  
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   test-pip-install:
-    name: Test pip installation
+    name: Test pip installation (AL-tutorial)
     runs-on: ubuntu-latest
 
     steps:
@@ -25,17 +25,20 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install package with pip
+      - name: Install AL-tutorial package with pip
+        working-directory: AL-tutorial
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e .
 
       - name: Verify installation
-        run: python tests/check.py
+        working-directory: AL-tutorial
+        run: |
+          python tests/check.py
 
 
   test-conda-install:
-    name: Test conda installation
+    name: Test conda installation (AL-tutorial)
     runs-on: ubuntu-latest
 
     steps:
@@ -47,13 +50,13 @@ jobs:
         with:
           auto-update-conda: true
           activate-environment: alt
-          environment-file: environment.yml
+          environment-file: AL-tutorial/environment.yml
           python-version: "3.10"
 
       - name: Verify conda environment
         shell: bash -l {0}
+        working-directory: AL-tutorial
         run: |
           conda info
           conda list
           python tests/check.py
-
