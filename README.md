@@ -194,7 +194,7 @@ The active learning are based on the following work:
 
 ---
 
-## 5. Useful Links
+## Useful Links
 
 - [SALTED Documentation](https://salted.readthedocs.io)
 - [DeepH Repository](https://github.com/deeph-dev)
