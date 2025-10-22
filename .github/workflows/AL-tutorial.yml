@@ -1,5 +1,5 @@
 # ================================================================
-# GitHub Actions workflow: Installation Tests (AL-tutorial)
+# GitHub Actions workflow: Installation Tests (Active-learning-MLIPs)
 # ---------------------------------------------------------------
 # This workflow ensures that the tutorial environment can be
 # correctly set up using either:
@@ -10,7 +10,7 @@
 # and can also be run manually from the Actions tab.
 # ================================================================
 
-name: Installation Tests (AL-tutorial)
+name: Installation Tests (Active-learning-MLIPs)
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
   # JOB 1: pip-based installation
   # ================================================================
   test-pip-install:
-    name: Test pip environment setup (AL-tutorial)
+    name: Test pip environment setup (Active-learning-MLIPs)
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +43,7 @@ jobs:
 
       # Step 4: Install dependencies using pip
       - name: Install dependencies from pyproject.toml
-        working-directory: AL-tutorial
+        working-directory: Active-learning-MLIPs
         run: |
           python -m pip install --upgrade pip
           pip install . --no-build-isolation --config-settings editable_mode=unsafe || true
@@ -51,7 +51,7 @@ jobs:
 
       # Step 5: Show installed packages
       - name: Show installed packages
-        working-directory: AL-tutorial
+        working-directory: Active-learning-MLIPs
         shell: bash
         run: |
           echo "=== pip packages ==="
@@ -59,7 +59,7 @@ jobs:
 
       # Step 6: Verify imports
       - name: Verify imports
-        working-directory: AL-tutorial
+        working-directory: Active-learning-MLIPs
         run: |
           python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('Pip environment OK')"
 
@@ -73,7 +73,7 @@ jobs:
   # JOB 2: conda-based installation
   # ================================================================
   test-conda-install:
-    name: Test conda environment setup (AL-tutorial)
+    name: Test conda environment setup (Active-learning-MLIPs)
     runs-on: ubuntu-latest
 
     steps:
@@ -87,13 +87,13 @@ jobs:
         with:
           auto-update-conda: true
           activate-environment: alt
-          environment-file: AL-tutorial/environment.yaml
+          environment-file: Active-learning-MLIPs/environment.yaml
           python-version: "3.10"
 
       # Step 3: Show installed packages
       - name: Show installed packages
         shell: bash -l {0}
-        working-directory: AL-tutorial
+        working-directory: Active-learning-MLIPs
         run: |
           echo "=== pip packages ==="
           python -m pip list
@@ -103,7 +103,7 @@ jobs:
       # Step 4: Verify imports
       - name: Verify imports
         shell: bash -l {0}
-        working-directory: AL-tutorial
+        working-directory: Active-learning-MLIPs
         run: |
           python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('Conda environment OK')"
 
