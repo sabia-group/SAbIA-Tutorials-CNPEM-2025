@@ -1,0 +1,21 @@
+[project]
+name = "alt"
+description = "Active Learning Tutorial"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "ase",
+    "ipi",
+    "ipywidgets",
+    "jupyter",
+    "mace-torch",
+    "matplotlib",
+    "numpy",
+    "rich", # optional
+    "scipy",
+    "tqdm",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
