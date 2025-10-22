@@ -6,3 +6,4 @@ notebook
 jupyterlab
 ase
 chemiscope
+ipi
