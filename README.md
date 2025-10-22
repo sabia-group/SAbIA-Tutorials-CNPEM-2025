@@ -11,7 +11,12 @@
    - [Overview](#overview-1)
    - [Resources](#resources)
    - [Installation](#installation)
-4. [References and Links](#4-references-and-links)
+4. [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#4-tutorial-3-machine-learning-interatomic-potentials--active-learning)
+   - [Overview](#overview-2)
+   - [Resources](#resources-1)
+   - [Installation](#installation-1)
+   - [References](#references-1)
+5. [Useful Links](#5-references-and-links)
 
 ---
 
@@ -23,7 +28,7 @@ The tutorials cover these topics:
 
 - Fundamental concepts of **machine learning** and their application to **electronic structure problems**.
 - The inclusion of **nuclear quantum effects** using **path-integral molecular dynamics (PIMD)** via the i-PI code.
-- ...
+- Committee-based **active learning** techniques for interatomic potentials.
 
 ---
 
@@ -38,8 +43,6 @@ Switch to the repository root directory and run:
 jupyter lab --notebook-dir=.
 ```
 
----
-
 ### Basics-GPR-and-NN Tutorials
 
 In folder `Basics-GPR-and-NN`, you will find two self-contained Jupyter notebooks.  
@@ -50,8 +53,6 @@ Install the required packages:
 ```bash
 pip install numpy matplotlib plotly ipython ipykernel ipywidgets
 ```
-
----
 
 ### SALTED Tutorial
 
@@ -74,7 +75,6 @@ Please install the requirements:
    pip install numpy matplotlib py3Dmol salted ase ipywidgets scipy scikit-learn h5py
    ```
 
-
 ---
 
 ## 3. Tutorial 2: Nuclear Quantum Effects with i-PI
@@ -85,14 +85,12 @@ The tutorial consists of two main parts:
 1. **Equilibrium density of low-temperature para-hydrogen** via NpT simulation.
 2. **Quantum free energy differences** using multiple computational strategies.
 
----
 
 ### Resources
 
 - 🌐 [SabIA Research Group](https://www.mpsd.mpg.de/research/groups/sabia)
 - 📖 [i-PI Documentation](https://docs.ipi-code.org/)
 
----
 
 ### Installation
 
@@ -129,10 +127,79 @@ You are now ready to start running the simulations.
 
 ---
 
-## 4. References and Links
+## 4. Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
+
+Everything connected to the active learning tutorial for the [CNPEM-MPG](https://pages.cnpem.br/ilum-maxplanck-meeting/) meeting 07/2025.
+
+### Overview
+
+This tutorial illustrates the basic concepts of **committee-based active learning** using **MACE potentials** to represent potential energy surfaces in simple, illustrative systems.
+
+You will find two tutorials in the `notebook` folder:
+- `1-zundel.ipynb`: apply Query by Committee to the *zundel cation* from labeled data
+- `2-eigen.ipynb`: apply Query by Committee to the *eigen cation* from unlabeled data
+
+
+### Resources
+
+- ⚙️ [MACE Repository](https://github.com/ACEsuit/mace)
+- 📦 [ASE Repository](https://gitlab.com/ase/ase)
+
+
+### Installation
+
+#### System Dependencies
+
+This tutorial requires the system package `python3-tk` for GUI support (used by `ase` and related tools).  
+Please install it before proceeding:
+
+```bash
+sudo apt-get install python3-tk
+```
+
+#### Option 1: Using `pip` (recommended for simplicity)
+
+Create and activate a virtual environment and install the package and its dependencies through the `pyproject.toml` file:
+
+```bash
+mkdir -p ~/venv
+python -m venv ~/venv/alt
+source ~/venv/alt/bin/activate  
+# On Windows use: %USERPROFILE%\venv\alt\Scripts\activate
+python -m pip install -e .
+```
+
+#### Option 2: Using `conda` (alternative approach)
+
+Create a `conda` environment using the provided `environment.yaml` file and activate the `alt` environment:
+
+```bash
+conda env create -f environment.yml
+conda activate alt
+```
+
+#### Verify Installation
+
+Check that the main packages we need are installed:
+
+```bash
+python tests/check.py
+```
+
+### References
+
+The active learning are based on the following work:
+
+- [Schran C., Brezina K., Marsalek O. JCP, 153, 104105, 2020](https://doi.org/10.1063/5.0016004)
+
+---
+
+## 5. Useful Links
 
 - [SALTED Documentation](https://salted.readthedocs.io)
 - [DeepH Repository](https://github.com/deeph-dev)
 - [FHI-aims Website](https://fhi-aims.org)
 - [i-PI Code Repository](https://github.com/i-pi/i-pi)
 - [SabIA Group Webpage](https://www.mpsd.mpg.de/research/groups/sabia)
+- [MACE Repository](https://github.com/ACEsuit/mace)
+- [ASE Repository](https://gitlab.com/ase/ase)
