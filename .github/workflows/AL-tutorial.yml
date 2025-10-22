@@ -18,37 +18,30 @@ on:
       - '**'              # Run on push to any branch
   workflow_dispatch:       # Allow manual trigger from GitHub UI
 
-# ================================================================
-# JOB 1: pip-based installation
-# ---------------------------------------------------------------
-# Creates a clean Ubuntu runner, installs Python, system dependencies,
-# then installs all Python dependencies defined in pyproject.toml.
-# Verifies that imports work and runs a basic check script.
-# ================================================================
 jobs:
+  # ================================================================
+  # JOB 1: pip-based installation
+  # ================================================================
   test-pip-install:
     name: Test pip environment setup (AL-tutorial)
-    runs-on: ubuntu-latest   # Use the latest Ubuntu GitHub-hosted runner
+    runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Get the repository code
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Install system-level dependencies (required for GUI tools)
+      # Step 2: Install system-level dependencies
       - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y python3-tk
+        run: sudo apt-get update && sudo apt-get install -y python3-tk git gfortran make
 
-      # Step 3: Set up a specific Python version
+      # Step 3: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
       # Step 4: Install dependencies using pip
-      # Note: Because the repository doesn't contain a single Python package yet,
-      # the install step is wrapped in `|| true` to avoid failing the workflow.
-      # This still allows checking that all dependencies install correctly.
       - name: Install dependencies from pyproject.toml
         working-directory: AL-tutorial
         run: |
@@ -56,31 +49,39 @@ jobs:
           pip install . --no-build-isolation --config-settings editable_mode=unsafe || true
           pip install ase ipi ipywidgets jupyter mace-torch matplotlib numpy rich scipy tqdm
 
-      # Step 5: Check that imports and scripts run successfully
+      # Step 5: Show installed packages
+      - name: Show installed packages
+        working-directory: AL-tutorial
+        shell: bash
+        run: |
+          echo "=== pip packages ==="
+          python -m pip list
+
+      # Step 6: Verify imports
       - name: Verify imports
         working-directory: AL-tutorial
         run: |
           python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('Pip environment OK')"
-          python tests/check.py || true
 
+      # Step 7: Verify i-PI works
+      - name: Verify i-PI
+        shell: bash -l {0}
+        run: |
+          i-pi -h
 
-# ================================================================
-# JOB 2: conda-based installation
-# ---------------------------------------------------------------
-# Sets up a conda environment using environment.yaml and validates
-# that it can be activated and run the test script.
-# ================================================================
+  # ================================================================
+  # JOB 2: conda-based installation
+  # ================================================================
   test-conda-install:
     name: Test conda environment setup (AL-tutorial)
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Get the repository code
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Miniconda and create the environment
-      # The environment file path points to AL-tutorial/environment.yaml
+      # Step 2: Set up Miniconda
       - name: Set up Miniconda
         uses: conda-incubator/setup-miniconda@v3
         with:
@@ -89,18 +90,25 @@ jobs:
           environment-file: AL-tutorial/environment.yaml
           python-version: "3.10"
 
-      # Step 3: Verify that the conda environment works correctly
-      - name: Verify conda environment
-        shell: bash -l {0}      # Ensures conda is available in this shell
+      # Step 3: Show installed packages
+      - name: Show installed packages
+        shell: bash -l {0}
         working-directory: AL-tutorial
         run: |
-          conda info
+          echo "=== pip packages ==="
+          python -m pip list
+          echo "=== conda packages ==="
           conda list
-          python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('Conda environment OK')"
-          python tests/check.py || true
 
-      # Step 4: Verify that the i-PI works correctly
+      # Step 4: Verify imports
+      - name: Verify imports
+        shell: bash -l {0}
+        working-directory: AL-tutorial
+        run: |
+          python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('Conda environment OK')"
+
+      # Step 5: Verify i-PI works
       - name: Verify i-PI
-        shell: bash -l {0}      # Ensures conda is available in this shell
+        shell: bash -l {0}
         run: |
           i-pi -h

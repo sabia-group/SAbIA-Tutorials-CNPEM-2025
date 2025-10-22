@@ -41,17 +41,41 @@ jobs:
           source env.sh
           echo "PYTHONPATH is now: $PYTHONPATH"
 
-      # Step 6: Verify basic imports including i-PI tools
-      - name: Verify imports
+      # Step 6: Clone and build i-PI
+      - name: Clone and build i-PI
+        run: |
+          # Clone i-PI via HTTPS (works in CI)
+          git clone https://github.com/i-pi/i-pi.git /tmp/i-pi
+
+          # Compile the Fortran drivers
+          cd /tmp/i-pi/drivers/f90
+          make
+          cd ../..
+
+          # Source i-PI environment
+          source /tmp/i-pi/env.sh
+
+      # Step 7: Show installed packages
+      - name: Show installed packages
         working-directory: Path-integral-MD
         shell: bash
         run: |
-          conda info
-          conda list
-          python tests/check.py || true
+          echo "=== pip packages ==="
+          python -m pip list
+          echo "=== conda packages (if available) ==="
+          if command -v conda &> /dev/null; then
+              conda list
+          fi
 
-      # Step 7: Verify that the i-PI works correctly
+      # Step 8: Verify imports
+      - name: Verify basic imports
+        working-directory: Path-integral-MD
+        shell: bash
+        run: |
+          python -c "import ipitools; import numpy; import scipy; import matplotlib; print('Basic imports OK')"
+
+      # Step 9: Verify that i-PI works
       - name: Verify i-PI
-        shell: bash -l {0}      # Ensures conda is available in this shell
+        shell: bash -l {0}      # Ensures conda environment is available in shell
         run: |
           i-pi -h
