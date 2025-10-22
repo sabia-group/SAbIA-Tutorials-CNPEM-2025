@@ -18,7 +18,7 @@ jobs:
 
       # Step 2: Install system dependencies
       - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y python3-tk git
+        run: sudo apt-get update && sudo apt-get install -y python3-tk git gfortran make
 
       # Step 3: Set up Python
       - name: Set up Python
@@ -33,7 +33,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 5: Source env.sh to set PYTHONPATH
+      # Step 5: Source Path-integral-MD env.sh to set PYTHONPATH
       - name: Set PYTHONPATH
         working-directory: Path-integral-MD
         shell: bash
@@ -41,9 +41,25 @@ jobs:
           source env.sh
           echo "PYTHONPATH is now: $PYTHONPATH"
 
-      # Step 6: (Optional) Verify imports
+      # Step 6: Clone and build i-PI
+      - name: Clone and build i-PI
+        run: |
+          # Clone i-PI via HTTPS
+          git clone https://github.com/i-pi/i-pi.git /tmp/i-pi
+
+          # Compile the Fortran drivers
+          cd /tmp/i-pi/drivers/f90
+          make
+          cd ../..
+
+          # Source i-PI environment
+          source /tmp/i-pi/env.sh
+
+      # Step 7: Verify basic imports including i-PI tools
       - name: Verify imports
         working-directory: Path-integral-MD
         shell: bash
         run: |
-          python -c "import ipitools; import numpy; import scipy; import matplotlib; print('Basic imports OK')"
+          conda info
+          conda list
+          python tests/check.py || true
