@@ -2,33 +2,34 @@
 
 ## 🗂️ Table of Contents
 
-- [Overview](#1-overview)
-- [Tutorial 1: Machine Learning Basics and ML for Electronic Structure](#2-tutorial-1-machine-learning-basics-and-ml-for-electronic-structure)
+- [Overview](#overview)
+- [Tutorial 1: Machine Learning Basics and ML for Electronic Structure](#tutorial-1-machine-learning-basics-and-ml-for-electronic-structure)
    - [Run the Tutorial](#run-the-tutorial)
-   - [Basics-GPR-and-NN](#basics-gprandnn-tutorials)
-   - [SALTED](#salted-tutorial)
-- [Tutorial 2: Nuclear Quantum Effects with i-PI](#3-tutorial-2-nuclear-quantum-effects-with-i-pi)
+   - [Basics-GPR-and-NN Tutorials](#basics-gpr-and-nn-tutorials)
+   - [SALTED Tutorial](#salted-tutorial)
+- [Tutorial 2: Nuclear Quantum Effects with i-PI](#tutorial-2-nuclear-quantum-effects-with-i-pi)
    - [Overview](#overview-1)
    - [Resources](#resources)
    - [Installation](#installation)
-- [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#4-tutorial-3-machine-learning-interatomic-potentials--active-learning)
+- [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#tutorial-3-machine-learning-interatomic-potentials--active-learning)
    - [Overview](#overview-2)
    - [Resources](#resources-1)
    - [Installation](#installation-1)
    - [References](#references-1)
-- [Useful Links](#5-references-and-links)
+- [Useful Links](#5-useful-links)
+
 
 ---
 
 ## Overview
 
-Collection of tutorials from the **SabIA group** presented at the **2025 INCT - Max Planck Meeting on Electronic Structure Methods and Materials Informatics** at **CNPEM (Campinas, Brazil)**.
+Collection of tutorials from the **SabIA group** presented at the **2025 INCT - Max Planck Meeting on Electronic Structure Methods and Materials Informatics** at **CNPEM (Campinas, Brazil)**. A YouTube link to the timestamped part of each tutorial, including the introductory lectures, is provided from the official livestream recording of the event. Slides from the lectures can be found in the respective folders.
 
 The tutorials cover these topics:
 
-- Fundamental concepts of **machine learning** and their application to **electronic structure problems**.
-- The inclusion of **nuclear quantum effects** using **path-integral molecular dynamics (PIMD)** via the i-PI code.
-- Committee-based **active learning** techniques for interatomic potentials.
+- Fundamental concepts of **machine learning** and their application to **electronic structure problems**. [Video](https://www.youtube.com/watch?v=V9wDgLjeJoE&t=1s)
+- The inclusion of **nuclear quantum effects** using **path-integral molecular dynamics (PIMD)** via the i-PI code. [Video](https://www.youtube.com/live/5TakNe0Yn4s?si=RXdVgpIzREhmNhuJ&t=5138)
+- Committee-based **active learning** techniques for interatomic potentials. [Video](https://www.youtube.com/live/f_u3txNm5wc?si=MwUiH9qFrJjYzrHU&t=7040)
 
 ---
 
@@ -129,13 +130,9 @@ You are now ready to start running the simulations.
 
 ## Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
 
-Everything connected to the active learning tutorial for the [CNPEM-MPG](https://pages.cnpem.br/ilum-maxplanck-meeting/) meeting 07/2025.
-
-### Overview
-
 This tutorial illustrates the basic concepts of **committee-based active learning** using **MACE potentials** to represent potential energy surfaces in simple, illustrative systems.
 
-You will find two tutorials in the `notebook` folder:
+You will find two tutorials in the `notebooks` folder:
 - `1-zundel.ipynb`: apply Query by Committee to the *zundel cation* from labeled data
 - `2-eigen.ipynb`: apply Query by Committee to the *eigen cation* from unlabeled data
 
@@ -203,3 +200,4 @@ The active learning are based on the following work:
 - [SabIA Group Webpage](https://www.mpsd.mpg.de/research/groups/sabia)
 - [MACE Repository](https://github.com/ACEsuit/mace)
 - [ASE Repository](https://gitlab.com/ase/ase)
+- [Elia, Eliaaaaa!](https://www.youtube.com/clip/UgkxIIoxVQ6gTe0BnKlGReFWBo4DUQsdiSXa)
