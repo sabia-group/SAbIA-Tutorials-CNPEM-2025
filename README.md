@@ -129,13 +129,9 @@ You are now ready to start running the simulations.
 
 ## Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
 
-Everything connected to the active learning tutorial for the [CNPEM-MPG](https://pages.cnpem.br/ilum-maxplanck-meeting/) meeting 07/2025.
-
-### Overview
-
 This tutorial illustrates the basic concepts of **committee-based active learning** using **MACE potentials** to represent potential energy surfaces in simple, illustrative systems.
 
-You will find two tutorials in the `notebook` folder:
+You will find two tutorials in the `notebooks` folder:
 - `1-zundel.ipynb`: apply Query by Committee to the *zundel cation* from labeled data
 - `2-eigen.ipynb`: apply Query by Committee to the *eigen cation* from unlabeled data
 
