@@ -16,7 +16,7 @@
    - [Resources](#resources-1)
    - [Installation](#installation-1)
    - [References](#references-1)
-- [Useful Links](#5-useful-links)
+- [Useful Links](#useful-links)
 
 
 ---
