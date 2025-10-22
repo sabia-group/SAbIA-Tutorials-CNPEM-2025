@@ -22,13 +22,13 @@
 
 ## 1. Overview
 
-Collection of tutorials from the **SabIA group** presented at the **2025 INCT - Max Planck Meeting on Electronic Structure Methods and Materials Informatics** at **CNPEM (Campinas, Brazil)**.
+Collection of tutorials from the **SabIA group** presented at the **2025 INCT - Max Planck Meeting on Electronic Structure Methods and Materials Informatics** at **CNPEM (Campinas, Brazil)**. A YouTube link to the timestamped part of each tutorial, including the introductory lectures, is provided from the official livestream recording of the event. Slides from the lectures can be found in the respective folders.
 
 The tutorials cover these topics:
 
-- Fundamental concepts of **machine learning** and their application to **electronic structure problems**.
-- The inclusion of **nuclear quantum effects** using **path-integral molecular dynamics (PIMD)** via the i-PI code.
-- Committee-based **active learning** techniques for interatomic potentials.
+- Fundamental concepts of **machine learning** and their application to **electronic structure problems**. [Video](https://www.youtube.com/watch?v=V9wDgLjeJoE&t=1s)
+- The inclusion of **nuclear quantum effects** using **path-integral molecular dynamics (PIMD)** via the i-PI code. [Video](https://www.youtube.com/live/5TakNe0Yn4s?si=RXdVgpIzREhmNhuJ&t=5138)
+- Committee-based **active learning** techniques for interatomic potentials. [Video](https://www.youtube.com/live/f_u3txNm5wc?si=MwUiH9qFrJjYzrHU&t=7040)
 
 ---
 
@@ -203,3 +203,4 @@ The active learning are based on the following work:
 - [SabIA Group Webpage](https://www.mpsd.mpg.de/research/groups/sabia)
 - [MACE Repository](https://github.com/ACEsuit/mace)
 - [ASE Repository](https://gitlab.com/ase/ase)
+- [Elia, Eliaaaaa!](https://www.youtube.com/clip/UgkxIIoxVQ6gTe0BnKlGReFWBo4DUQsdiSXa)
