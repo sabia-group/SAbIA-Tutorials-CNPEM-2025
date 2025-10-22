@@ -51,4 +51,5 @@ jobs:
       - name: Verify basic imports
         shell: bash
         run: |
-          python -c "import numpy, matplotlib, plotly, ipython, ipykernel, ipywidgets, py3Dmol, salted, ase, scipy, sklearn, h5py; print('All packages import OK')"
+          python -c "import numpy, matplotlib, plotly, IPython, ipykernel, ipywidgets, py3Dmol, salted, ase, scipy, sklearn, h5py; print('All packages import OK')"
+
