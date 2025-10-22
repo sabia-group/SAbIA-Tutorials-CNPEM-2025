@@ -20,7 +20,7 @@
 
 ---
 
-## 1. Overview
+## Overview
 
 Collection of tutorials from the **SabIA group** presented at the **2025 INCT - Max Planck Meeting on Electronic Structure Methods and Materials Informatics** at **CNPEM (Campinas, Brazil)**.
 
@@ -32,7 +32,7 @@ The tutorials cover these topics:
 
 ---
 
-## 2. Tutorial 1: Machine Learning Basics and ML for Electronic Structure
+## Tutorial 1: Machine Learning Basics and ML for Electronic Structure
 
 ### Run the Tutorial
 
@@ -77,7 +77,7 @@ Please install the requirements:
 
 ---
 
-## 3. Tutorial 2: Nuclear Quantum Effects with i-PI
+## Tutorial 2: Nuclear Quantum Effects with i-PI
 
 ### Overview
 
@@ -127,7 +127,7 @@ You are now ready to start running the simulations.
 
 ---
 
-## 4. Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
+## Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
 
 Everything connected to the active learning tutorial for the [CNPEM-MPG](https://pages.cnpem.br/ilum-maxplanck-meeting/) meeting 07/2025.
 
