@@ -43,8 +43,6 @@ Switch to the repository root directory and run:
 jupyter lab --notebook-dir=.
 ```
 
----
-
 ### Basics-GPR-and-NN Tutorials
 
 In folder `Basics-GPR-and-NN`, you will find two self-contained Jupyter notebooks.  
@@ -55,8 +53,6 @@ Install the required packages:
 ```bash
 pip install numpy matplotlib plotly ipython ipykernel ipywidgets
 ```
-
----
 
 ### SALTED Tutorial
 
@@ -89,14 +85,12 @@ The tutorial consists of two main parts:
 1. **Equilibrium density of low-temperature para-hydrogen** via NpT simulation.
 2. **Quantum free energy differences** using multiple computational strategies.
 
----
 
 ### Resources
 
 - 🌐 [SabIA Research Group](https://www.mpsd.mpg.de/research/groups/sabia)
 - 📖 [i-PI Documentation](https://docs.ipi-code.org/)
 
----
 
 ### Installation
 
@@ -145,14 +139,12 @@ You will find two tutorials in the `notebook` folder:
 - `1-zundel.ipynb`: apply Query by Committee to the *zundel cation* from labeled data
 - `2-eigen.ipynb`: apply Query by Committee to the *eigen cation* from unlabeled data
 
----
 
 ### Resources
 
 - ⚙️ [MACE Repository](https://github.com/ACEsuit/mace)
 - 📦 [ASE Repository](https://gitlab.com/ase/ase)
 
----
 
 ### Installation
 
@@ -193,8 +185,6 @@ Check that the main packages we need are installed:
 ```bash
 python tests/check.py
 ```
-
----
 
 ### References
 
