@@ -2,25 +2,25 @@
 
 ## 🗂️ Table of Contents
 
-1. [Overview](#1-overview)
-2. [Tutorial 1: Machine Learning Basics and ML for Electronic Structure](#2-tutorial-1-machine-learning-basics-and-ml-for-electronic-structure)
+- [Overview](#1-overview)
+- [Tutorial 1: Machine Learning Basics and ML for Electronic Structure](#2-tutorial-1-machine-learning-basics-and-ml-for-electronic-structure)
    - [Run the Tutorial](#run-the-tutorial)
    - [Basics-GPR-and-NN](#basics-gprandnn-tutorials)
    - [SALTED](#salted-tutorial)
-3. [Tutorial 2: Nuclear Quantum Effects with i-PI](#3-tutorial-2-nuclear-quantum-effects-with-i-pi)
+- [Tutorial 2: Nuclear Quantum Effects with i-PI](#3-tutorial-2-nuclear-quantum-effects-with-i-pi)
    - [Overview](#overview-1)
    - [Resources](#resources)
    - [Installation](#installation)
-4. [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#4-tutorial-3-machine-learning-interatomic-potentials--active-learning)
+- [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#4-tutorial-3-machine-learning-interatomic-potentials--active-learning)
    - [Overview](#overview-2)
    - [Resources](#resources-1)
    - [Installation](#installation-1)
    - [References](#references-1)
-5. [Useful Links](#5-references-and-links)
+- [Useful Links](#5-references-and-links)
 
 ---
 
-## 1. Overview
+## Overview
 
 Collection of tutorials from the **SabIA group** presented at the **2025 INCT - Max Planck Meeting on Electronic Structure Methods and Materials Informatics** at **CNPEM (Campinas, Brazil)**. A YouTube link to the timestamped part of each tutorial, including the introductory lectures, is provided from the official livestream recording of the event. Slides from the lectures can be found in the respective folders.
 
@@ -32,7 +32,7 @@ The tutorials cover these topics:
 
 ---
 
-## 2. Tutorial 1: Machine Learning Basics and ML for Electronic Structure
+## Tutorial 1: Machine Learning Basics and ML for Electronic Structure
 
 ### Run the Tutorial
 
@@ -77,7 +77,7 @@ Please install the requirements:
 
 ---
 
-## 3. Tutorial 2: Nuclear Quantum Effects with i-PI
+## Tutorial 2: Nuclear Quantum Effects with i-PI
 
 ### Overview
 
@@ -127,7 +127,7 @@ You are now ready to start running the simulations.
 
 ---
 
-## 4. Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
+## Tutorial 3: Machine Learning Interatomic Potentials – Active Learning
 
 Everything connected to the active learning tutorial for the [CNPEM-MPG](https://pages.cnpem.br/ilum-maxplanck-meeting/) meeting 07/2025.
 
