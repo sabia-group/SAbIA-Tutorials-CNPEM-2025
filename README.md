@@ -2,21 +2,22 @@
 
 ## 🗂️ Table of Contents
 
-- [Overview](#1-overview)
-- [Tutorial 1: Machine Learning Basics and ML for Electronic Structure](#2-tutorial-1-machine-learning-basics-and-ml-for-electronic-structure)
+- [Overview](#overview)
+- [Tutorial 1: Machine Learning Basics and ML for Electronic Structure](#tutorial-1-machine-learning-basics-and-ml-for-electronic-structure)
    - [Run the Tutorial](#run-the-tutorial)
-   - [Basics-GPR-and-NN](#basics-gprandnn-tutorials)
-   - [SALTED](#salted-tutorial)
-- [Tutorial 2: Nuclear Quantum Effects with i-PI](#3-tutorial-2-nuclear-quantum-effects-with-i-pi)
+   - [Basics-GPR-and-NN Tutorials](#basics-gpr-and-nn-tutorials)
+   - [SALTED Tutorial](#salted-tutorial)
+- [Tutorial 2: Nuclear Quantum Effects with i-PI](#tutorial-2-nuclear-quantum-effects-with-i-pi)
    - [Overview](#overview-1)
    - [Resources](#resources)
    - [Installation](#installation)
-- [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#4-tutorial-3-machine-learning-interatomic-potentials--active-learning)
+- [Tutorial 3: Machine Learning Interatomic Potentials – Active Learning](#tutorial-3-machine-learning-interatomic-potentials--active-learning)
    - [Overview](#overview-2)
    - [Resources](#resources-1)
    - [Installation](#installation-1)
    - [References](#references-1)
-- [Useful Links](#5-references-and-links)
+- [Useful Links](#5-useful-links)
+
 
 ---
 
