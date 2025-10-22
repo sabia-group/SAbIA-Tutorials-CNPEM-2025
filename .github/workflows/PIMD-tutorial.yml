@@ -1,4 +1,4 @@
-name: Path-integral-MD CI
+name: Installation Tests (PIMD)
 
 on:
   push:
@@ -41,21 +41,7 @@ jobs:
           source env.sh
           echo "PYTHONPATH is now: $PYTHONPATH"
 
-      # Step 6: Clone and build i-PI
-      - name: Clone and build i-PI
-        run: |
-          # Clone i-PI via HTTPS
-          git clone https://github.com/i-pi/i-pi.git /tmp/i-pi
-
-          # Compile the Fortran drivers
-          cd /tmp/i-pi/drivers/f90
-          make
-          cd ../..
-
-          # Source i-PI environment
-          source /tmp/i-pi/env.sh
-
-      # Step 7: Verify basic imports including i-PI tools
+      # Step 6: Verify basic imports including i-PI tools
       - name: Verify imports
         working-directory: Path-integral-MD
         shell: bash
@@ -63,3 +49,9 @@ jobs:
           conda info
           conda list
           python tests/check.py || true
+
+      # Step 7: Verify that the i-PI works correctly
+      - name: Verify i-PI
+        shell: bash -l {0}      # Ensures conda is available in this shell
+        run: |
+          i-pi -h

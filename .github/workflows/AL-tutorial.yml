@@ -98,3 +98,9 @@ jobs:
           conda list
           python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('Conda environment OK')"
           python tests/check.py || true
+
+      # Step 4: Verify that the i-PI works correctly
+      - name: Verify i-PI
+        shell: bash -l {0}      # Ensures conda is available in this shell
+        run: |
+          i-pi -h
