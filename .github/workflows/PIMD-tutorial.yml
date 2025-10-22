@@ -1,0 +1,110 @@
+name: Installation Tests (PIMD-tutorial)
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  # ===============================
+  # JOB 1: AL-tutorial pip install
+  # ===============================
+  al_tutorial_pip:
+    name: AL-tutorial pip installation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y python3-tk
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install AL-tutorial dependencies via pip
+        working-directory: AL-tutorial
+        run: |
+          python -m pip install --upgrade pip
+          pip install . --no-build-isolation --config-settings editable_mode=unsafe || true
+          pip install ase ipi ipywidgets jupyter mace-torch matplotlib numpy rich scipy tqdm
+
+      - name: Verify AL-tutorial imports
+        working-directory: AL-tutorial
+        run: |
+          python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('AL-tutorial pip OK')"
+          python tests/check.py || true
+
+  # ===============================
+  # JOB 2: AL-tutorial conda install
+  # ===============================
+  al_tutorial_conda:
+    name: AL-tutorial conda installation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+          activate-environment: alt
+          environment-file: AL-tutorial/environment.yaml
+          python-version: "3.10"
+
+      - name: Verify AL-tutorial conda environment
+        shell: bash -l {0}
+        working-directory: AL-tutorial
+        run: |
+          conda info
+          conda list
+          python -c "import ase, numpy, scipy, tqdm, rich, matplotlib; print('AL-tutorial conda OK')"
+          python tests/check.py || true
+
+  # ===============================
+  # JOB 3: Second package (requirements + i-pi)
+  # ===============================
+  second_package:
+    name: Second package setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install system dependencies
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y git gfortran make
+
+      # Install Python dependencies
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+        working-directory: path/to/second-package
+
+      # Set PYTHONPATH
+      - name: Set PYTHONPATH
+        run: source env.sh
+        working-directory: path/to/second-package
+
+      # Clone i-pi repository
+      - name: Clone i-pi
+        run: git clone https://github.com/i-pi/i-pi.git /tmp/i-pi
+
+      # Build i-pi Fortran driver
+      - name: Build i-pi
+        run: |
+          cd /tmp/i-pi/drivers/f90
+          make
+        shell: bash
+
+      # Source i-pi environment
+      - name: Source i-pi environment
+        run: source /tmp/i-pi/env.sh
